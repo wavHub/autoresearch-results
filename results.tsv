@@ -8,3 +8,4 @@ b971fea	1.491071	11.4	keep	exp3 WARMDOWN_RATIO 0.25->0.15 (1.491 vs 1.567, -0.07
 88dcb79	1.429892	11.4	keep	exp6 MATRIX_LR 0.05->0.06 (1.430 vs 1.440, -0.010)
 4e9e0a8	1.437691	11.4	discard	exp7 MATRIX_LR 0.06->0.07 (1.438 vs 1.430 overshoot)
 3d33a04	1.394097	11.4	keep	exp8 FINAL_LR_FRAC 0.0->0.1 (1.394 vs 1.430, -0.036)
+exp10	1.422408	11.4	discard	exp10 EMBEDDING_LR 0.6->0.8 (1.422 vs 1.394)
