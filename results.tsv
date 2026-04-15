@@ -6,3 +6,4 @@ b971fea	1.491071	11.4	keep	exp3 WARMDOWN_RATIO 0.25->0.15 (1.491 vs 1.567, -0.07
 8c73901	1.469034	11.4	keep	exp4 WARMDOWN_RATIO 0.15->0.05 (1.469 vs 1.491, -0.022 diminishing)
 2c89ddf	1.440016	11.4	keep	exp5 MATRIX_LR 0.04->0.05 (1.440 vs 1.469, -0.029)
 88dcb79	1.429892	11.4	keep	exp6 MATRIX_LR 0.05->0.06 (1.430 vs 1.440, -0.010)
+4e9e0a8	1.437691	11.4	discard	exp7 MATRIX_LR 0.06->0.07 (1.438 vs 1.430 overshoot)
