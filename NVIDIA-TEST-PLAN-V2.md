@@ -345,3 +345,63 @@ The graph (`autoresearch-baseline-progress.png`) and raw data (`results.tsv`) sh
 **ASI-Evolve:** A separate tool from arXiv:2603.29640 (SJTU/GAIR, March 2026). It adds a "cognition base" that stores insights from past experiments and retrieves them for future rounds. Open source at https://github.com/GAIR-NLP/ASI-Evolve. NOT used in this test — this test is autoresearch only.
 
 **This is a CONTROL experiment.** No modifications to autoresearch. Run it as Karpathy designed it. The results are the baseline.
+
+---
+
+## MACHINE-SPECIFIC: RTX 4070 (12GB VRAM)
+
+**GPU:** NVIDIA GeForce RTX 4070
+**VRAM:** 12,282 MB (12GB GDDR6X)
+**CUDA cores:** 5,888
+**CPU:** Intel i7-13700KF
+**RAM:** 32GB
+**OS:** Windows 11 Pro (WSL2 Ubuntu)
+
+### Required train.py modifications BEFORE first run
+
+The default config needs ~45GB VRAM (H100). RTX 4070 has 12GB. Edit `train.py` BEFORE running:
+
+```python
+# Find these lines and change them:
+
+DEVICE_BATCH_SIZE = 128   # CHANGE TO: 16 or 32
+DEPTH = 8                 # CHANGE TO: 4 or 6
+TOTAL_BATCH_SIZE = 2**19  # CHANGE TO: 2**16 or 2**17
+```
+
+**Start conservative:**
+```python
+DEVICE_BATCH_SIZE = 16
+DEPTH = 4
+TOTAL_BATCH_SIZE = 2**16
+```
+
+If that works without OOM, try increasing:
+```python
+DEVICE_BATCH_SIZE = 32
+DEPTH = 6
+TOTAL_BATCH_SIZE = 2**17
+```
+
+### Flash Attention compatibility
+
+RTX 4070 is Ada Lovelace (compute capability 8.9). NOT Hopper (9.0). The code will fall back to `kernels-community/flash-attn3` instead of `varunneal/flash-attention-3`. This should happen automatically — check the output for:
+
+```
+# Should see something like:
+# Using kernels-community/flash-attn3 (non-Hopper GPU)
+```
+
+If Flash Attention fails entirely, check: https://github.com/karpathy/autoresearch#platform-support
+
+### Expected performance
+
+| Setting | DEPTH=4, BS=16 | DEPTH=6, BS=32 |
+|---------|---------------|----------------|
+| Params | ~12M | ~30M |
+| VRAM | ~4GB | ~10GB |
+| Tokens/step | ~32K | ~65K |
+| Steps in 5 min | ~200+ | ~100+ |
+| val_bpb | Higher (worse) | Lower (better) |
+
+Smaller model trains faster but achieves worse val_bpb. The agent's job is to find improvements within the 5-minute budget at whatever model size fits in VRAM.
