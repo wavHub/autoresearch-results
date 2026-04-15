@@ -1,2 +1,3 @@
 commit	val_bpb	memory_gb	status	description
 b94a517	1.657928	11.4	keep	baseline RTX4070 DEVICE_BATCH_SIZE=32 TIME_BUDGET=600 53steps
+a1a6f74	1.728378	11.4	discard	exp1 WARMUP_RATIO 0.05 (worse: 1.728 vs 1.658)
