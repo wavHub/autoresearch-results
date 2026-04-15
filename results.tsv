@@ -1,1 +1,2 @@
 commit	val_bpb	memory_gb	status	description
+e345ec6	1.825723	11.4	keep	baseline DEVICE_BATCH_SIZE=32 RTX4070 31steps
