@@ -436,7 +436,7 @@ WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
 TOTAL_BATCH_SIZE = 2**19 # ~524K tokens per optimizer step
-EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
+EMBEDDING_LR = 0.4      # exp11: embedding LR 0.6->0.4 (opposite direction)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.06        # exp6: Muon LR 0.05->0.06 (push further)
 SCALAR_LR = 0.5         # learning rate for per-layer scalars (Adam)
