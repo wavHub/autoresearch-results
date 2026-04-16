@@ -1,2 +1,9 @@
 commit	val_bpb	memory_gb	status	description
-h100-baseline	0.996831	44.0	keep	baseline DEFAULTS H100 SXM 80GB 927steps mfu=38.72%
+228791f	0.997275	44.0	keep	baseline H100 defaults 922 steps
+228791f	0.999221	44.0	discard	exp1 WARMDOWN_RATIO 0.5->0.3 (0.999 vs 0.997)
+228791f	1.000917	44.0	discard	exp2 WARMDOWN_RATIO 0.5->0.2 (1.001 vs 0.997)
+228791f	1.003840	44.0	discard	exp3 WARMDOWN_RATIO 0.5->0.15 (1.004 vs 0.997)
+228791f	1.006598	44.0	discard	exp4 WARMDOWN_RATIO 0.5->0.1 (1.007 vs 0.997)
+228791f	0.996360	44.0	keep	exp5 MATRIX_LR 0.04->0.05 (-0.001)
+228791f	0.996343	44.0	keep	exp6 MATRIX_LR 0.04->0.06 (-0.000017)
+228791f	0.996409	44.0	discard	exp7 MATRIX_LR 0.04->0.07 (overshoot)
