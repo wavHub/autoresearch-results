@@ -1,0 +1,2 @@
+commit	val_bpb	memory_gb	status	description
+h100-baseline	0.996831	44.0	keep	baseline DEFAULTS H100 SXM 80GB 927steps mfu=38.72%
