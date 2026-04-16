@@ -1,0 +1,14 @@
+commit	val_bpb	memory_gb	status	description
+b94a517	1.657928	11.4	keep	baseline RTX4070 DEVICE_BATCH_SIZE=32 TIME_BUDGET=600 53steps
+a1a6f74	1.728378	11.4	discard	exp1 WARMUP_RATIO 0.05 (worse: 1.728 vs 1.658)
+14acd68	1.566551	11.4	keep	exp2 WARMDOWN_RATIO 0.5->0.25 (1.567 vs 1.658, -0.091)
+b971fea	1.491071	11.4	keep	exp3 WARMDOWN_RATIO 0.25->0.15 (1.491 vs 1.567, -0.076)
+8c73901	1.469034	11.4	keep	exp4 WARMDOWN_RATIO 0.15->0.05 (1.469 vs 1.491, -0.022 diminishing)
+2c89ddf	1.440016	11.4	keep	exp5 MATRIX_LR 0.04->0.05 (1.440 vs 1.469, -0.029)
+88dcb79	1.429892	11.4	keep	exp6 MATRIX_LR 0.05->0.06 (1.430 vs 1.440, -0.010)
+4e9e0a8	1.437691	11.4	discard	exp7 MATRIX_LR 0.06->0.07 (1.438 vs 1.430 overshoot)
+3d33a04	1.394097	11.4	keep	exp8 FINAL_LR_FRAC 0.0->0.1 (1.394 vs 1.430, -0.036)
+exp9	1.422109	11.4	discard	exp9 FINAL_LR_FRAC 0.1->0.2 (1.422 vs 1.394 overshoot)
+exp10	1.422408	11.4	discard	exp10 EMBEDDING_LR 0.6->0.8 (1.422 vs 1.394)
+exp11	1.443792	11.4	discard	exp11 EMBEDDING_LR 0.6->0.4 (1.444 vs 1.394)
+exp12	1.428641	11.4	discard	exp12 WEIGHT_DECAY 0.2->0.1 (1.429 vs 1.394)
